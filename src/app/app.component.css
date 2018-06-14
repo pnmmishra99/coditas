@@ -1,0 +1,71 @@
+.header{
+    background-color: dodgerblue;
+    height: 70px;
+}
+
+.dropdown-menu{
+    margin-left: 448px;
+}
+
+.btn-primary{
+    color: #000;
+    background-color: #fff;
+    margin-left: 333px;
+    width: 204px;
+    height: 35px;
+    margin-top: 16px;
+}
+
+.search{
+    margin-top: -52px;
+    float: right;
+    margin-right: 458px;
+    position: relative;
+}
+
+i.fa-search { position: absolute; top: 10px; left: 173px; }
+
+.body{
+    background-color: #eee;
+    height: 660px;
+    padding-top: 39px;
+}
+.dataList{
+    width: 613px;
+    display: block;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    height: 175px;
+}
+img{
+    border-radius: 50%;
+    height: 103px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.btn-primary{
+    width: 118px;
+    margin-left: 320px;
+}
+.detailsButton{
+    margin-left: 450px;
+    margin-top: -44px;
+}
+
+.detailsSec{
+    margin-top: 25px;
+}
+.url{
+    margin-bottom: 20px;
+}
+
+.sortButton{
+    margin-left: 449px
+}
+.totalCount{
+    margin-left: auto;
+    margin-right: auto;
+    width: 616px;
+    margin-bottom: 12px;
+}
