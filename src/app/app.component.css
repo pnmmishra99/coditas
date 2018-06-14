@@ -27,34 +27,36 @@ i.fa-search { position: absolute; top: 10px; left: 173px; }
 
 .body{
     background-color: #eee;
-    height: 660px;
+    height: auto;
     padding-top: 39px;
 }
 .dataList{
-    width: 613px;
+    width: 670px;
     display: block;
     background-color: #fff;
     margin-left: auto;
     margin-right: auto;
     height: 175px;
+    margin-bottom: 20px;
 }
 img{
     border-radius: 50%;
     height: 103px;
     margin-top: 15px;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 .btn-primary{
     width: 118px;
     margin-left: 320px;
 }
 .detailsButton{
-    margin-left: 450px;
+    margin-left: 502px;
     margin-top: -44px;
 }
 
 .detailsSec{
     margin-top: 25px;
+    margin-left: -36px;
 }
 .url{
     margin-bottom: 20px;

@@ -13,7 +13,7 @@
   </div>
   <div class="search form-group">
       <i class="fa fa-search"></i>
-    <input class="form-control" placeholder="Search term">
+    <input class="form-control" placeholder="Search term" [(ngModel)]="searchString">
     <!-- <span class="fa fa-search errspan"></span> -->
   </div>
   </div>
@@ -22,14 +22,14 @@
   <div class="totalCount">
     Total Results :{{data.total_count}}
   </div>
-  <div class="dataList row">
+  <div class="dataList row" *ngFor="let item of data.items">
     <div class="col-md-3">
-      <img src="https://avatars1.githubusercontent.com/u/22451426?v=4" alt="W3Schools.com">
+      <img src="{{item.avatar_url}}" alt="profilePic">
     </div>
-      <div class="col-md-6 detailsSec">
-        <h4>Name</h4>
+      <div class="col-md-7 detailsSec">
+        <h4>{{item.login}}</h4>
         <div class="url">
-          profile url:bcijevvke
+          profile url:{{item.url}}
         </div>
         <div>
           data one
@@ -38,7 +38,7 @@
           data two
         </div>
       </div>
-      <div col-md-3>
+      <div col-md-2>
         <button type="button" class="btn btn-primary detailsButton">details</button>
       </div>
   </div>

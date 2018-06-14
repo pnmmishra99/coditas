@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    FormsModule
     // IonicModule.forRoot(MyApp)
   ],
   providers: [HttpClientModule],

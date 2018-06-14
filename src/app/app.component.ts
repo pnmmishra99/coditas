@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   private apiUrl = 'https://api.github.com/search/users?q=varun';
   data: any = {};
+  searchString: string;
   constructor(private http: Http) {
     this.getContacts();
     this.getData();
