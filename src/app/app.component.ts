@@ -8,23 +8,28 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private apiUrl = 'https://api.github.com/search/users?q=varun';
+  private apiUrl = 'https://api.github.com/search/users?q=';
   data: any = {};
   searchString: string;
   constructor(private http: Http) {
-    this.getContacts();
-    this.getData();
+    // this.getContacts();
+    // this.getData();
   }
 
-  getData() {
-    return this.http.get(this.apiUrl)
+  getData(url) {
+    return this.http.get(url)
     .map((res: Response) => res.json() );
   }
-  getContacts() {
-    this.getData().subscribe(data => {
+  getContacts(searchStr) {
+    const url = this.apiUrl + searchStr;
+    this.getData(url).subscribe(data => {
       this.data = data;
       console.log('data', this.data);
     });
 
+  }
+  onKeyUp(event) {
+    console.log(event.target.value);
+    this.getContacts(event.target.value);
   }
 }

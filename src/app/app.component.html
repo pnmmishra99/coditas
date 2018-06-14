@@ -13,7 +13,7 @@
   </div>
   <div class="search form-group">
       <i class="fa fa-search"></i>
-    <input class="form-control" placeholder="Search term" [(ngModel)]="searchString">
+    <input class="form-control" placeholder="Search term" [(ngModel)]="searchString" (keyup)="onKeyUp($event)">
     <!-- <span class="fa fa-search errspan"></span> -->
   </div>
   </div>
