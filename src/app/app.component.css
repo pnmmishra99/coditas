@@ -37,7 +37,6 @@ i.fa-search { position: absolute; top: 10px; left: 173px; }
     margin-left: auto;
     margin-right: auto;
     height: 175px;
-    margin-bottom: 20px;
 }
 img{
     border-radius: 50%;
@@ -76,4 +75,12 @@ img{
 }
 .pagination{
     margin-left: 481px;
+}
+.table{
+    width: 44%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.listRow{
+    margin-bottom: 20px;
 }

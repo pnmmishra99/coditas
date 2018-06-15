@@ -22,7 +22,8 @@
   <div class="totalCount defaultFont">
     Total Results :{{totalCount}}
   </div>
-  <div class="dataList row" *ngFor="let item of pagedItems">
+  <div class="listRow" *ngFor="let item of pagedItems;let i=index">
+    <div class="dataList row" >
     <div class="col-md-3">
       <img src="{{item.avatar_url}}" alt="profilePic">
     </div>
@@ -39,8 +40,17 @@
         </div>
       </div>
       <div col-md-2>
-        <button type="button" class="btn btn-primary detailsButton">details</button>
+        <button type="button" class="btn btn-primary detailsButton" (click)="detailsClicked(item,i)">Details</button>
       </div>
+      </div>
+      <table *ngIf="selectedDetails == i" class="table table-striped">
+          <tbody *ngFor="let repo of repoData">
+            <tr>
+              <td>{{repo.name}}</td>
+              <td>{{repo.language}}</td>
+            </tr>
+          </tbody>
+        </table>
   </div>
   <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
     <li [ngClass]="{disabled:pager.currentPage === 1}">

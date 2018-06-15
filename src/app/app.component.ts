@@ -10,6 +10,9 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent {
   private apiUrl = 'https://api.github.com/search/users?q=';
+  // buttonCondition = false;
+  repoData: any = [];
+  selectedDetails: number;
   totalCount: number;
   data: any = {};
   // array of all items to be paged
@@ -88,5 +91,12 @@ setPage(page: number) {
 
   // get current page of items
   this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
+detailsClicked(details, index) {
+  this.selectedDetails = index;
+  this.http.get(details.repos_url)
+    .map((res: Response) => res.json() ).subscribe((repos) => {
+      this.repoData = repos;
+    });
 }
 }
