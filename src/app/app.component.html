@@ -19,29 +19,46 @@
   </div>
 </div>
 <div class="body">
-  <div class="totalCount">
-    Total Results :{{data.total_count}}
+  <div class="totalCount defaultFont">
+    Total Results :{{totalCount}}
   </div>
-  <div class="dataList row" *ngFor="let item of data.items">
+  <div class="dataList row" *ngFor="let item of pagedItems">
     <div class="col-md-3">
       <img src="{{item.avatar_url}}" alt="profilePic">
     </div>
-      <div class="col-md-7 detailsSec">
+      <div class="col-md-7 detailsSec defaultFont">
         <h4>{{item.login}}</h4>
         <div class="url">
-          profile url:{{item.url}}
+          profile url : {{item.url}}
         </div>
         <div>
-          {{item.score}}
+          Id : {{item.id}}
         </div>
         <div>
-          data two
+          Score : {{item.score}}
         </div>
       </div>
       <div col-md-2>
         <button type="button" class="btn btn-primary detailsButton">details</button>
       </div>
   </div>
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)">Next</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)">Last</a>
+    </li>
+</ul>
 
 </div>
 

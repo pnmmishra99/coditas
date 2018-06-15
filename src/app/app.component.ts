@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Http, Response} from '@angular/http';
+import {PagerService} from './pager.service';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -9,9 +10,18 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent {
   private apiUrl = 'https://api.github.com/search/users?q=';
+  totalCount: number;
   data: any = {};
+  // array of all items to be paged
+  private allItems: any[];
+
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any[];
   searchString: string;
-  constructor(private http: Http) {
+  constructor(private http: Http, private pagerService: PagerService) {
     // this.getContacts();
     // this.getData();
   }
@@ -23,8 +33,13 @@ export class AppComponent {
   getContacts(searchStr) {
     const url = this.apiUrl + searchStr;
     this.getData(url).subscribe(data => {
-      this.data = data;
-      console.log('data', this.data);
+      // this.data = data;
+      // set items to json response
+      this.totalCount = data.total_count;
+      this.allItems = data.items;
+
+      // initialize to page 1
+      this.setPage(1);
     },
   error => {
     console.log('error', error);
@@ -33,7 +48,6 @@ export class AppComponent {
   }
   onKeyUp(event) {
     if (event.target.value !== '') {
-      console.log(event.target.value);
     this.getContacts(event.target.value);
     } else {
       this.data.total_count = null;
@@ -43,7 +57,7 @@ export class AppComponent {
   }
   myFunction(type) {
     if (type === 'nameDesc') {
-    this.data.items.sort(function(a, b) {
+    this.pagedItems.sort(function(a, b) {
         const x = a.login.toLowerCase();
         const y = b.login.toLowerCase();
         if (x > y) {return -1; }
@@ -52,7 +66,7 @@ export class AppComponent {
     });
     }
     if (type === 'nameAsc') {
-      this.data.items.sort(function(a, b) {
+      this.pagedItems.sort(function(a, b) {
           const x = a.login.toLowerCase();
           const y = b.login.toLowerCase();
           if (x < y) {return -1; }
@@ -61,11 +75,18 @@ export class AppComponent {
       });
       }
       if (type === 'rankAsc') {
-        this.data.items.sort(function(a, b) {return a.score - b.score; });
+        this.pagedItems.sort(function(a, b) {return a.score - b.score; });
         }
         if (type === 'rankDesc') {
-          this.data.items.sort(function(a, b) {return b.score - a.score; });
+          this.pagedItems.sort(function(a, b) {return b.score - a.score; });
           }
 
+}
+setPage(page: number) {
+  // get pager object from service
+  this.pager = this.pagerService.getPager(this.allItems.length, page);
+
+  // get current page of items
+  this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 }
 }

@@ -4,7 +4,7 @@
 }
 
 .dropdown-menu{
-    margin-left: 448px;
+    margin-left: 423px;
 }
 
 .btn-primary{
@@ -73,4 +73,7 @@ img{
 }
 .defaultFont{
     font-family: 'Lato', sans-serif;
+}
+.pagination{
+    margin-left: 481px;
 }
