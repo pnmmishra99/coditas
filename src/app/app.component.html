@@ -5,10 +5,10 @@
     <button class="btn btn-primary form-control sortButton" type="button" data-toggle="dropdown">Sort By
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="#">Name(A-Z)</a></li>
-      <li><a href="#">Name(Z-A)</a></li>
-      <li><a href="#">Rank &uarr;</a></li>
-      <li><a href="#">Rank &darr;</a></li>
+      <li><a (click)="myFunction('nameAsc')">Name(A-Z)</a></li>
+      <li><a (click)="myFunction('nameDesc')">Name(Z-A)</a></li>
+      <li><a (click)="myFunction('rankAsc')">Rank &uarr;</a></li>
+      <li><a (click)="myFunction('rankDesc')">Rank &darr;</a></li>
     </ul>
   </div>
   <div class="search form-group">
@@ -32,7 +32,7 @@
           profile url:{{item.url}}
         </div>
         <div>
-          data one
+          {{item.score}}
         </div>
         <div>
           data two

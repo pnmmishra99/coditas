@@ -25,11 +25,47 @@ export class AppComponent {
     this.getData(url).subscribe(data => {
       this.data = data;
       console.log('data', this.data);
-    });
+    },
+  error => {
+    console.log('error', error);
+  });
 
   }
   onKeyUp(event) {
-    console.log(event.target.value);
+    if (event.target.value !== '') {
+      console.log(event.target.value);
     this.getContacts(event.target.value);
+    } else {
+      this.data.total_count = null;
+      this.data.items = [];
+    }
+
   }
+  myFunction(type) {
+    if (type === 'nameDesc') {
+    this.data.items.sort(function(a, b) {
+        const x = a.login.toLowerCase();
+        const y = b.login.toLowerCase();
+        if (x > y) {return -1; }
+        if (x < y) {return 1; }
+        return 0;
+    });
+    }
+    if (type === 'nameAsc') {
+      this.data.items.sort(function(a, b) {
+          const x = a.login.toLowerCase();
+          const y = b.login.toLowerCase();
+          if (x < y) {return -1; }
+          if (x > y) {return 1; }
+          return 0;
+      });
+      }
+      if (type === 'rankAsc') {
+        this.data.items.sort(function(a, b) {return a.score - b.score; });
+        }
+        if (type === 'rankDesc') {
+          this.data.items.sort(function(a, b) {return b.score - a.score; });
+          }
+
+}
 }
